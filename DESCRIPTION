@@ -1,0 +1,40 @@
+Package: MethylToSNP
+Title: A novel tool for removing SNPs in Illumina DNA methylation array data
+Version: 0.99.0
+Maintainer: Alexander Goncearenco <gonceare@nih.gov>
+Description: A novel tool for removing SNPs in Illumina DNA methylation array data
+Authors@R: c(
+    person(given = "Brenna",
+           family = "Labarre",
+           role = c("aut"),
+           email = "brenna.labarre@nih.gov",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person(given = "Alexander",
+           family = "Goncearenco",
+           role = c("aut", "cre"),
+           email = "gonceare@nih.gov",
+           comment = c(ORCID = "YOUR-ORCID-ID")),
+    person(given = "Laura",
+           family = "Elnitski",
+           role = c("aut"),
+           email = "elnitski@nih.gov",
+           comment = c(ORCID = "YOUR-ORCID-ID")))
+Depends:
+    R (>= 3.3.1),
+    Ckmeans.1d.dp
+Imports:
+    Ckmeans.1d.dp,
+    minfi,
+Suggests:
+    minfiData,
+    minfiDataEPIC,
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/neksa/MethylToSNP
+BugReports: https://github.com/neksa/MethylToSNP/issues
+RoxygenNote: 6.1.1
