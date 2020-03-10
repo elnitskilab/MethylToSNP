@@ -12,7 +12,7 @@ or to install directly from GitHub:
 ```r
 install.packages("devtools")
 library(devtools)
-install_github("neksa/MethylToSNP")
+install_github("elnitskilab/MethylToSNP")
 ```
 
 
