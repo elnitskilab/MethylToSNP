@@ -35,6 +35,6 @@ VignetteBuilder: knitr
 License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/neksa/MethylToSNP
-BugReports: https://github.com/neksa/MethylToSNP/issues
+URL: https://github.com/elnitskilab/MethylToSNP
+BugReports: https://github.com/elnitskilab/MethylToSNP/issues
 RoxygenNote: 6.1.1
