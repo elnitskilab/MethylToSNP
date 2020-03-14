@@ -24,8 +24,8 @@ Depends:
     Ckmeans.1d.dp
 Imports:
     Ckmeans.1d.dp,
-    minfi,
 Suggests:
+    minfi,
     minfiData,
     minfiDataEPIC,
     testthat,

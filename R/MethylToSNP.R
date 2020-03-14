@@ -39,7 +39,8 @@ MethylToSNP <- function(data, gap.ratio = 0.75, gap.sum.ratio = 0.5, verbose=FAL
     
     if (is(data, "GenomicRatioSet") || is(data, "GenomicMethylSet") || is(data, "MethylSet") || is(data, "RatioSet")) {
         if (verbose) 
-            message("[MethylToSNP] Calculating beta matrix.")
+            message("[MethylToSNP] Calculating beta matrix. minfi is required")
+        .checkMinfi()
         data <- getBeta(data)
     }
 
@@ -182,6 +183,16 @@ MethylToSNP <- function(data, gap.ratio = 0.75, gap.sum.ratio = 0.5, verbose=FAL
 }
 
 
+.checkMinfi <- function() {
+	if (!exists('getBeta')) {
+		if (!is_installed('minfi')) {
+			stop("[MethylToSNP] Bioconductor minfi package is required to ")
+		} else {
+			library('minfi')
+		}        	
+	}
+}
+
 plotPotentialSNPs <- function(x, betas, horizontal=TRUE) {
 	plotProbes(betas[rownames(x), ], horizontal)
 }
@@ -189,7 +200,8 @@ plotPotentialSNPs <- function(x, betas, horizontal=TRUE) {
 
 plotProbes <- function(betas, horizontal=TRUE) {
 	if (is(betas, "GenomicRatioSet") || is(betas, "GenomicMethylSet") || is(betas, "MethylSet") || is(betas, "RatioSet")) {
-	    message("[MethylToSNP] Extracting beta values.")
+	    message("[MethylToSNP] Extracting beta values. Minfi required")
+	    .checkMinfi()
 	    betas <- getBeta(betas)
 	}
 
