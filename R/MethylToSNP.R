@@ -1,4 +1,4 @@
-#' A novel tool for removing SNPs in Illumina DNA methylation array data
+#' This method identifies novel SNPs in Illumina DNA methylation array data
 #'
 #' @docType package
 #' @name MethylToSNP
@@ -9,7 +9,7 @@ NULL
 
 #' Identify sites that may have underlying SNPs in methylation array data
 #' 
-#' @param data An GenomicRatioSet, GenomicMethylSet, MethylSet, or RatioSet object (see minfi package)
+#' @param data A matrix or a data frame or an GenomicRatioSet, GenomicMethylSet, MethylSet, or RatioSet object (see minfi package)
 #' @param gap.ratio The ratio of two gaps should be above the threshold.
 #' @param gap.sum.ratio The ratio of the sum of two gaps relative to the total range of values should be above the threshold.
 #' @param outlier.sd Do not consider outliers that are more than the specified number of standard deviations from the cluster center.
@@ -17,7 +17,8 @@ NULL
 #' @param verbose Show additional information. Useful for debugging.
 #' @return Detected probes with 3-tier SNP-like methylation pattern along with their reliability scores and SNP annotation
 #' @examples
-#' MethylToSNP(data)
+#' MethylToSNP(
+#'	data.frame(row.names=c('cg0000001', 'cg0000002'), sample1=c(0.1, 0.5), sample2=c(0.5, 0.9), sample3=c(0.4, 0.8)))
 #' @export
 MethylToSNP <- function(data, gap.ratio = 0.75, gap.sum.ratio = 0.5, verbose=FALSE, outlier.sd = 3.0, SNP)
 {
@@ -193,11 +194,29 @@ MethylToSNP <- function(data, gap.ratio = 0.75, gap.sum.ratio = 0.5, verbose=FAL
 	}
 }
 
+
+#' Plot distribution of beta values for array probes that were identified as SNPs
+#' 
+#' @param x a data frame with probes identified as SNPs by MethylToSNP()
+#' @param betas A matrix or a data frame or an GenomicRatioSet, GenomicMethylSet, MethylSet, or RatioSet object (see minfi package)
+#' @param horizontal plot orientation (horizontal=TRUE by default)
+#' @examples
+#' x <- MethylToSNP(betas)
+#' x <- plotPotentialSNPs(x, data)
+#' @export
 plotPotentialSNPs <- function(x, betas, horizontal=TRUE) {
-	plotProbes(betas[rownames(x), ], horizontal)
+	plotProbes(betas[rownames(x), ], horizontal=horizontal)
 }
 
 
+#' Plot distribution of beta values for array probes
+#' 
+#' @param betas A matrix or a data frame or an GenomicRatioSet, GenomicMethylSet, MethylSet, or RatioSet object (see minfi package)
+#' @param horizontal plot orientation (horizontal=TRUE by default)
+#' @examples
+#' x <- MethylToSNP(betas)
+#' x <- plotPotentialSNPs(x, data)
+#' @export
 plotProbes <- function(betas, horizontal=TRUE) {
 	if (is(betas, "GenomicRatioSet") || is(betas, "GenomicMethylSet") || is(betas, "MethylSet") || is(betas, "RatioSet")) {
 	    message("[MethylToSNP] Extracting beta values. Minfi required")

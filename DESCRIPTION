@@ -1,8 +1,8 @@
 Package: MethylToSNP
-Title: A novel tool for removing SNPs in Illumina DNA methylation array data
+Title: This method identifies novel SNPs in Illumina DNA methylation array data
 Version: 0.99.0
 Maintainer: Alexander Goncearenco <gonceare@nih.gov>
-Description: A novel tool for removing SNPs in Illumina DNA methylation array data
+Description: Find patterns in methylation data characteristic for SNPs underlying CpG loci
 Authors@R: c(
     person(given = "Brenna",
            family = "Labarre",
@@ -37,4 +37,4 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/elnitskilab/MethylToSNP
 BugReports: https://github.com/elnitskilab/MethylToSNP/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
